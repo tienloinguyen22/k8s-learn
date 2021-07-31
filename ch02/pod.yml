@@ -1,0 +1,16 @@
+# Version of the Kubernetes API
+apiVersion: v1
+
+# Type of resource
+kind: Pod
+
+# Metadata for the resource
+metadata:
+  name: hello-kiamon-3
+
+# Specification for the resource
+spec:
+  containers:
+  - name: web
+    image: kiamol/ch02-hello-kiamol
+

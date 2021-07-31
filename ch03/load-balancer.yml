@@ -1,0 +1,19 @@
+apiVersion: v1
+
+kind: Service
+
+metadata:
+  name: numbers-web
+
+spec:
+  # LoadBalancer service use to route external traffic to Pods
+  type: LoadBalancer
+
+  ports:
+    - port: 8088 # Port listen for external traffic
+      targetPort: 80 # Port of Pods to forward traffic to
+
+  # Select all Pods that have both 2 selectors
+  selector:
+    app: lab-numbers-web
+    version: v2

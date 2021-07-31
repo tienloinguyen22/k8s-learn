@@ -1,0 +1,13 @@
+# Don't have apps/v1
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: todo-web-config-dev
+data:
+  # Create ConfigMap from inline JSON
+  config.json: |-
+    {
+      "ConfigController": {
+        "Enalbed": true
+      }
+    }

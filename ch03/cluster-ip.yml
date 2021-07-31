@@ -1,0 +1,20 @@
+# Don't have apps/v1 like Pods/Deployments
+apiVersion: v1
+
+kind: Service
+
+# Other Serivces can reach to this service by this name
+metadata:
+  name: numbers-api
+
+spec:
+  # Cluster IP type use for Pods to communicate with each others
+  type: CluterIP
+
+  # Listen on port 80 & Send traffic to port 80 of the Pod
+  ports:
+    - port: 80
+    
+  # Match all Pods fulfill all the selector labels. Can have multiple key-value pairs
+  selector:
+    app: lab-numbers-api

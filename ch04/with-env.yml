@@ -1,0 +1,27 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: sleep
+spec:
+  selector:
+    matchLabels:
+      app: sleep
+  template:
+    metadata:
+      labels:
+        app: sleep
+    spec:
+      container:
+        - name: sleep
+          image: kiamol/ch03-sleep
+          env:
+          # Inline env
+          - name: KIAMOL_CHAPTER
+            value: "04"
+          
+          # Env load from ConfigMap
+          - name: KIAMOL_SECTION
+            valueFrom:
+              configMapKeyRef:
+                name: sleep-config-literal
+                key: kiamol.section
