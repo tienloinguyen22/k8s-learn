@@ -1,0 +1,16 @@
+# Without apps/v1
+apiVersion: v1
+
+kind: PersistentVolume
+
+metadata:
+  name: pv01
+
+spec:
+  capacity:
+    storage: 50Mi
+  accessModes:
+    - ReadWriteOnce # Can only be used by 1 Pod
+  nfs: # Backed by NFS
+    server: nfs.my.network # Domain name of the NFS server
+    path: "/kubernets-volumes" # Path inside the NFS server

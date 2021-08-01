@@ -1,0 +1,24 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: neoflies
+spec:
+  selector:
+    matchLabels:
+      app: sleep
+  templates:
+    metadata:
+      labels:
+        app: sleep
+    spec:
+      container:
+        - name: sleep
+          image: kiamol/ch03-sleep
+          volumeMounts:
+            - name: cache-volume
+              mountPath: /data/nginx/cache # Dir path inside the container
+      volumes:
+        - name: cache-volume
+          hostPath:
+            path: /volumes/nginx/cache # Volume path on the node's disk
+            type: DirectoryOrCreate # Create if not exist

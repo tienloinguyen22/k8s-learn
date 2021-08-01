@@ -1,0 +1,22 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: neoflies
+spec:
+  selector:
+    matchLabels:
+      app: sleep
+  templates:
+    metadata:
+      labels:
+        app: sleep
+    spec:
+      container:
+        - name: sleep
+          image: kiamol/ch03-sleep
+          volumeMounts:
+            - name: data # Mount a volume name "data"
+              mountPath: /data # The volume is mount to "/data" dir
+      volumes: # The volume spec
+        - name: data # Volume name
+          emptyDir: {} # Empty dir volume
